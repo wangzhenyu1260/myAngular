@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="wrapper">
+
+    <form name="loginform" class="form-signin" ng-submit="loginform.$valid && vm.login()" novalidate>
+      <h2 class="form-signin-heading">Please Login</h2>
+
+      <div class="alert alert-info">
+        Username: test<br/>
+        Password: test
+      </div>
+
+      <div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
+
+      <div ng-class="{ 'has-error': loginform.username.$dirty && loginform.username.$invalid }">
+        <input type="text" name="username" class="form-control" ng-model="vm.username" placeholder="Username" required
+               autofocus/>
+        <span ng-show="loginform.username.$dirty && loginform.username.$invalid" class="help-block">Username is required</span>
+      </div>
+      <div ng-class="{ 'has-error': loginform.password.$dirty && loginform.password.$invalid }">
+        <input type="password" name="password" class="form-control" ng-model="vm.password" placeholder="Password" required/>
+        <span ng-show="loginform.password.$dirty && loginform.password.$invalid" class="help-block">Password is required</span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" ng-disabled="loginform.$invalid || vm.dataLoading"
+                class="btn btn-lg btn-primary btn-block">登录 <i class="fa"
+                                                               ng-class="vm.dataLoading ? 'fa-spinner fa-spin' : 'fa-sign-in'"></i>
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
